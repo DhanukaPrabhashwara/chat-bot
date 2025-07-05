@@ -23,12 +23,14 @@ const App = () => {
             </p>
           </div>
           <div className="message user-message">
-            <ChatbotIcon />
+            {/* <ChatbotIcon /> */}
             <p className="message-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
-          {/* Chatbot Footer */}
+        </div>
+        
+        {/* Chatbot Footer */}
           <div className="chat-footer">
             <form action="" className="chat-form">
               <input type="text" placeholder="Message..."
@@ -37,7 +39,6 @@ const App = () => {
               className="material-symbols-rounded">arrow_upward</button>
             </form>
           </div>
-        </div>
       </div>
     </div>
   );
