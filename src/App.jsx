@@ -29,12 +29,12 @@ const App = () => {
             </p>
           </div>
         </div>
-        
+
         {/* Chatbot Footer */}
           <div className="chat-footer">
             <form action="" className="chat-form">
               <input type="text" placeholder="Message..."
-              className="meassage-input" required/>
+              className="message-input" required/>
               <button 
               className="material-symbols-rounded">arrow_upward</button>
             </form>
