@@ -15,7 +15,7 @@ const ChatForm = ({chatHistory, setChatHistory, generateBotResponse}) => {
         // Simulate a bot response after a short delay
         setTimeout(() => {
             // Update chat history with a "thinking" message
-            setChatHistory((history) => [...history, {role: "mode", text: "Thinking..." }]),
+            setChatHistory((history) => [...history, {role: "model", text: "Thinking..." }]),
             
             // Call the function to generate the bot's response
             generateBotResponse([...chatHistory, {role: "user", text: userMessage}]);
@@ -30,4 +30,4 @@ const ChatForm = ({chatHistory, setChatHistory, generateBotResponse}) => {
     );
 };
 
-export default ChatForm;
+export default ChatForm; 

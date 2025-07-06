@@ -7,13 +7,19 @@ const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
 
   const generateBotResponse = async (history) => {
+    // Function to update the chat history with the bot's response
+    const updateHistory = (text) => {
+      setChatHistory(prev => [...prev.filter(msg => msg.text !== "Thinking..."), {role: "model", text}]);
+    }
 
     // Prepare the chat history for the API request
     history = history.map(({ role, text }) => ({role, parts: [{text}]}));
 
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({contents: history})
     }
 
@@ -23,7 +29,9 @@ const App = () => {
       const data = await response.json();
       if(!response.ok) throw new Error(data.error || "Something went wrong!");
 
-      console.log(data);
+      // Update the chat history with the bot's response
+      const apiResponseText = data.candidates[0].content.parts[0].text.replace(/\*\*(.*?)\*\*/g, "$1").trim();
+      updateHistory(apiResponseText);
     }catch (error){
       console.log(error);
     }
