@@ -5,6 +5,7 @@ import ChatMessage from "./components/ChatMessage";
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const [showChatbot, setShowChatbot] = useState(false);
   const chatBodyRef = useRef();
 
   const generateBotResponse = async (history) => {
@@ -44,7 +45,13 @@ const App = () => {
   }, [chatHistory]);
 
   return (
-    <div className="Container">
+    <div className={`container ${showChatbot ? "show-chatbot" : ""}`}>
+      <button onClick={() => setShowChatbot(prev => !prev)}
+      id="chatbot-toggler">
+        <span className="material-symbols-rounded">mode_comment</span>
+        <span className="material-symbols-rounded">close</span>
+      </button>
+
       <div className="chatbot-popup">
         {/* Chatbot Header */}
         <div className="chat-header">
