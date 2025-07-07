@@ -138,6 +138,10 @@ body {
     align-items: center;
 }
 
+.chat-body .message.error .message-text {
+    color: #ff0000;
+}
+
 .chat-body .bot-message svg{
     width: 35px;
     height: 35px;
@@ -227,4 +231,33 @@ body {
 
 .chat-form .message-input:valid~button {
     display: block;
+}
+
+/* Responsive Styles */
+@media (max-width: 520px) {
+    #chatbot-toggler {
+        width: 20px;
+        height: 20px;
+    }
+
+    .chatbot-popup {
+        width: 100%;
+        height: 100%;
+        right: 0;
+        bottom: 0;
+        border-radius: 0;
+    }
+
+    .chatbot-popup .chat-header {
+        padding: 12px 15px;
+    }
+
+    .chat-body {
+        height: calc(90% - 55px);
+        padding: 25px 15px;
+    }
+
+    .chat-footer {
+        padding: 10px 15px 15px;
+    }
 }
