@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import ChatbotIcon from "./components/ChatBotIcon";
 import ChatForm from "./components/ChatForm";
 import ChatMessage from "./components/ChatMessage";
 
 const App = () => {
   const [chatHistory, setChatHistory] = useState([]);
+  const chatBodyRef = useRef();
 
   const generateBotResponse = async (history) => {
     // Function to update the chat history with the bot's response
@@ -36,6 +37,12 @@ const App = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    // Scroll to the bottom of the chat body whenever chat history changes
+    chatBodyRef.current.scrollTo({top: chatBodyRef.current.scrollHeight, behavior: "smooth"});
+  }, [chatHistory]);
+
   return (
     <div className="Container">
       <div className="chatbot-popup">
@@ -50,7 +57,7 @@ const App = () => {
         </div>
 
         {/* Chatbot Body */}
-        <div className="chat-body">
+        <div ref={chatBodyRef} className="chat-body">
           <div className="message bot-message">
             <ChatbotIcon />
             <p className="message-text">
